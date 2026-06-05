@@ -11,6 +11,10 @@ I built this project to understand how enterprise RAG systems are structured bey
 ## Features
 
 - FastAPI assistant API with `/query`, `/ingest`, `/healthz`, and `/metrics`
+- Browser chat console with citation inspection and file upload
+- Upload ingestion for `.txt`, `.md`, `.json`, `.jsonl`, and `.csv` sources
+- Optional API key enforcement through `RAG_API_KEY`
+- Prometheus-style operational metrics
 - Hybrid dense/sparse retrieval with score fusion and deterministic reranking
 - Local extractive generator with source citations for offline demos
 - vLLM-compatible generation client for OpenAI-style completions endpoints
@@ -44,6 +48,18 @@ Run tests:
 pytest
 ```
 
+Run the benchmark harness:
+
+```bash
+python scripts/benchmark.py
+```
+
+Open the chat console at:
+
+```text
+http://127.0.0.1:8000
+```
+
 ## Architecture
 
 ```mermaid
@@ -67,6 +83,8 @@ The app reads environment variables with sensible defaults:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `RAG_INDEX_PATH` | `./data/index.jsonl` | JSONL document/chunk store |
+| `RAG_UPLOAD_DIR` | `./data/uploads` | Uploaded source file archive |
+| `RAG_API_KEY` | unset | Optional API key required as `x-api-key` |
 | `RAG_GENERATOR_MODE` | `local` | `local` or `vllm` |
 | `VLLM_BASE_URL` | `http://vllm:8000/v1` | vLLM OpenAI-compatible endpoint |
 | `VLLM_MODEL` | `enterprise-llm-7b-lora` | Served model name |

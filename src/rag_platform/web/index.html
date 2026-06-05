@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLM-RAG Enterprise Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel sidebar">
+        <div>
+          <p class="eyebrow">Enterprise RAG</p>
+          <h1>Assistant Console</h1>
+          <p class="subtle">Ask grounded questions, inspect citations, and upload source files.</p>
+        </div>
+
+        <form id="upload-form" class="upload">
+          <label for="files">Knowledge files</label>
+          <input id="files" name="files" type="file" multiple accept=".txt,.md,.json,.jsonl,.csv" />
+          <button type="submit">Index files</button>
+          <p id="upload-status" class="status"></p>
+        </form>
+
+        <div class="metric-grid">
+          <div>
+            <span id="chunk-count">0</span>
+            <small>chunks</small>
+          </div>
+          <div>
+            <span id="latency">0ms</span>
+            <small>latency</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel chat">
+        <div id="messages" class="messages" aria-live="polite">
+          <article class="message assistant">
+            <p>Ask a question about the indexed corpus. Answers include retrieved source citations.</p>
+          </article>
+        </div>
+
+        <form id="query-form" class="composer">
+          <input
+            id="question"
+            name="question"
+            type="text"
+            autocomplete="off"
+            placeholder="How does hybrid retrieval reduce hallucinations?"
+            required
+          />
+          <button type="submit">Ask</button>
+        </form>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

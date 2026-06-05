@@ -12,6 +12,7 @@ dependencies = [
   "fastapi>=0.111",
   "httpx>=0.27",
   "pydantic>=2.7",
+  "python-multipart>=0.0.9",
   "python-dotenv>=1.0",
   "pyyaml>=6.0",
   "uvicorn[standard]>=0.30",
@@ -26,6 +27,9 @@ langchain = ["langchain>=0.2", "langchain-community>=0.2"]
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+rag_platform = ["web/*.html", "web/*.css", "web/*.js"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
@@ -33,4 +37,3 @@ pythonpath = ["src"]
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-
