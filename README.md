@@ -4,6 +4,10 @@ A production-oriented Retrieval-Augmented Generation platform template for enter
 
 This project is intentionally runnable on a laptop while preserving the same boundaries used in larger deployments: ingestion, hybrid retrieval, reranking, generation, evaluation, observability, containerization, and Kubernetes manifests. GPU-backed vLLM, FAISS, LangChain, and PyTorch integrations are exposed through adapters so the system can run in lightweight local mode or be swapped into production infrastructure.
 
+## Project Motivation
+
+I built this project to understand how enterprise RAG systems are structured beyond a basic chatbot demo. The goal is to connect the important production pieces in one codebase: document ingestion, hybrid retrieval, grounded answer generation, evaluation, containerization, and Kubernetes deployment.
+
 ## Features
 
 - FastAPI assistant API with `/query`, `/ingest`, `/healthz`, and `/metrics`
@@ -80,4 +84,3 @@ For a real large-scale deployment, add:
 - model artifacts for the LoRA adapter and quantized serving image
 - production tracing through OpenTelemetry
 - offline RLHF/DPO training pipelines and signed model registry promotion
-
