@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rag-assistant-config
+data:
+  RAG_GENERATOR_MODE: "vllm"
+  VLLM_BASE_URL: "http://vllm-service:8000/v1"
+  VLLM_MODEL: "enterprise-llm-7b-lora"
+  RAG_TOP_K: "5"
+  RAG_DENSE_WEIGHT: "0.58"
+

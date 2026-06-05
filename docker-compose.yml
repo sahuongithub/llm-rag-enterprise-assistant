@@ -1,0 +1,14 @@
+services:
+  rag-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      RAG_GENERATOR_MODE: local
+      RAG_TOP_K: "5"
+    volumes:
+      - rag-data:/app/data
+
+volumes:
+  rag-data:
+

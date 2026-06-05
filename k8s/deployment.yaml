@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-assistant-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rag-assistant-api
+  template:
+    metadata:
+      labels:
+        app: rag-assistant-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/sahuongithub/llm-rag-enterprise-assistant:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: rag-assistant-config
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "768Mi"
+            limits:
+              cpu: "2"
+              memory: "2Gi"
+

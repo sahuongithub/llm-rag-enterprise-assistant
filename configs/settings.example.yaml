@@ -1,0 +1,9 @@
+index_path: ./data/index.jsonl
+generator_mode: local
+vllm_base_url: http://vllm:8000/v1
+vllm_model: enterprise-llm-7b-lora
+top_k: 5
+dense_weight: 0.58
+chunk_size: 900
+chunk_overlap: 120
+
